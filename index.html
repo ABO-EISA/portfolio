@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Personal portfolio</title>
+    <script>
+      let savedColor = localStorage.getItem("color");
+      if (savedColor) {
+        document.documentElement.style.setProperty("--main-color", savedColor);
+      }
+    </script>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -15,10 +21,15 @@
     <button id="up">
       <i class="fa-solid fa-arrow-up-long"></i>
     </button>
+    <ul id="mode">
+      <li id="mode-1" data-color="#5199eb"></li>
+      <li id="mode-2" data-color="red"></li>
+      <li id="mode-3" data-color="green"></li>
+    </ul>
     <header>
       <div class="container">
         <nav class="main-nav">
-          <div class="logo">
+          <div class="logo modes">
             <a href="#home">Abdulrahman Eisa</a>
           </div>
           <ul class="sub-nav">
@@ -154,7 +165,8 @@
                 </li>
                 <li><i class="fa-solid fa-phone I"></i> (+2)01065328445</li>
                 <li>
-                  <i class="fa-solid fa-envelope I"></i> abdoeisa562@gmail.com
+                  <i class="fa-solid fa-envelope I"></i>
+                  abdoeisa562@gmail.com
                 </li>
               </ul>
               <div class="icons">
@@ -197,7 +209,7 @@
                 <button
                   style="display: block"
                   type="submit"
-                  class="buttons btn-primary"
+                  class="buttons btn-primary modes"
                 >
                   Send
                 </button>
