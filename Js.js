@@ -1,5 +1,5 @@
 // زرار السكرول
-let up = document.getElementById("up");
+const up = document.getElementById("up");
 window.addEventListener("scroll", function () {
   if (window.scrollY >= 400) {
     up.style.display = "block";
@@ -13,9 +13,8 @@ up.addEventListener("click", (_) =>
     behavior: "smooth",
   }),
 );
-
-let mode = document.getElementById("mode");
-let new_mode = window.addEventListener("scroll", function () {
+const mode = document.getElementById("mode");
+window.addEventListener("scroll", function () {
   if (window.scrollY <= 200) {
     mode.style.display = "flex";
   } else {
@@ -23,22 +22,23 @@ let new_mode = window.addEventListener("scroll", function () {
   }
 });
 // تظبيط مود الصفحة
-let lis = document.querySelectorAll("ul li");
-//لو في لون محفوظ في اللوكال ستوردج
-if (window.localStorage.getItem("color")) {
-  // خلي لون الصفحة باللون الموجود في اللوكال ستوردج والكود ده عملناه في صفحة الاتش تي ام ال عشان الرفة الي كانت بتحصل
-  //   document.documentElement.style.setProperty(
-  //     "--main-color",
-  //     window.localStorage.getItem("color"),
-  //   );
+const lis = document.querySelectorAll("#mode li");
+// لو في لون محفوظ في اللوكال ستوردج
+const storedColor = window.localStorage.getItem("color");
+if (storedColor) {
   // شيل كلاس الاكتيف من كل الاوبشنز التانية
   lis.forEach((li) => {
     li.classList.remove("active");
   });
-  // ضيف كلاس الاكتيف بس للاختيار ده
-  document
-    .querySelector(`[data-color="${window.localStorage.getItem("color")}"]`)
-    .classList.add("active");
+  // ضيف كلاس الاكتيف بس للاختيار ده (مع null-check)
+  const storedElem = document.querySelector(
+    `#mode [data-color="${storedColor}"]`,
+  );
+  if (storedElem) storedElem.classList.add("active");
+} else {
+  // لو مافيش لون محفوظ، حط الاكتيف على الخيار الاول لتحسين تجربة المستخدم
+  const first = document.querySelector("#mode li");
+  if (first) first.classList.add("active");
 }
 // تفعيل حدث الضغط وتغيير الالوان
 lis.forEach((li) => {
