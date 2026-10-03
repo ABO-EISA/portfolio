@@ -23,6 +23,81 @@ body {
   max-width: 1140px;
   margin: 0 auto;
 }
+#up {
+  position: fixed;
+  bottom: 20px;
+  right: 8px;
+  background-color: var(--main-color);
+  border: 1px solid #f5f2f2;
+  border-radius: 5px;
+  font-size: 25px;
+  display: none;
+  cursor: pointer;
+  color: white;
+  padding: 4px;
+}
+
+#mode {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 100px;
+  right: 8px;
+  width: 40px;
+  height: 130px;
+  background-color: #d4d9df;
+  border-radius: 4px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 20px;
+}
+
+#mode-1 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  outline: 1px solid #4a90e2;
+  outline-offset: 3px;
+  cursor: pointer;
+  transform: scale(0.75);
+  opacity: 25%;
+  transition: all 0.5s ease-in-out;
+}
+
+#mode-2 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(247, 73, 73);
+  outline: 1px solid rgb(247, 73, 73);
+  outline-offset: 3px;
+  cursor: pointer;
+  opacity: 25%;
+  transform: scale(0.75);
+  transition: all 0.5s ease-in-out;
+}
+#mode-3 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(9, 172, 82);
+  outline: 1px solid rgb(9, 172, 82);
+  outline-offset: 3px;
+  cursor: pointer;
+  opacity: 25%;
+  transform: scale(0.75);
+  transition: all 0.5s ease-in-out;
+}
+
+#mode li.active {
+  opacity: 1;
+  transform: scale(0.8);
+}
 
 header {
   width: 100%;
@@ -74,13 +149,48 @@ header {
 .sub-nav a:hover {
   color: var(--main-color);
 }
-
+.bar {
+  display: none;
+}
 @media (max-width: 480px) {
   .main-nav {
-    flex-wrap: wrap;
-    display: block;
+    flex-direction: column;
   }
-
+  .nav-elements {
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none; /* تمنع الضغط على الروابط وهي مخفية */
+    transition:
+      max-height 0.4s ease-in-out,
+      opacity 0.3s ease-in-out,
+      padding 0.3s ease;
+    padding: 0;
+  }
+  .nav-elements.open_close {
+    max-height: 200px; /* الارتفاع الأقصى الذي تتمدد إليه القائمة */
+    opacity: 1;
+    pointer-events: auto; /* إعادة تفعيل الضغط على الروابط */
+    padding: 20px 0;
+  }
+  .bar {
+    display: block;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+  #mode {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    gap: 15px;
+  }
   .logo {
     flex: 0 0 100%;
     font-size: 1.5rem;
@@ -101,6 +211,7 @@ header {
 }
 
 /*--------------------- Hero section styling -----------------------------------------*/
+
 #home {
   background-color: #f8f9fa;
   padding: 120px 80px;
@@ -209,7 +320,7 @@ header {
 
 @media (max-width: 480px) {
   #home {
-    margin-top: 300px;
+    margin-top: 350px;
     padding: 0 80px;
   }
 
@@ -302,18 +413,26 @@ header {
 .project-overlay h2 {
   margin-bottom: 15px;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  color: var(--main-color);
 }
 
 .project-overlay a:hover {
-  color: #555;
-  text-decoration: underline;
+  color: white;
+  background-color: var(--main-color);
 }
 
 .project-item:hover img {
   transform: scale(1.2);
 }
-
+@media (max-width: 480px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .project-overlay {
+    padding: 15px;
+  }
+}
 #skills {
   background-color: #ffffff;
   padding: 80px 0;
@@ -357,8 +476,8 @@ header {
   color: rgb(184, 184, 25);
 }
 
-.skill-item .V {
-  color: rgb(50, 205, 97);
+.skill-item .R {
+  color: #61dafb;
 }
 
 .skill-item .N {
@@ -429,6 +548,13 @@ textarea,
 
 #my-contact-info button {
   cursor: pointer;
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    flex-direction: column;
+  }
 }
 
 footer {
@@ -447,79 +573,4 @@ footer .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-#up {
-  position: fixed;
-  bottom: 20px;
-  right: 8px;
-  background-color: var(--main-color);
-  border: 1px solid #f5f2f2;
-  border-radius: 5px;
-  font-size: 25px;
-  display: none;
-  cursor: pointer;
-  color: white;
-  padding: 4px;
-}
-
-#mode {
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: fixed;
-  top: 100px;
-  right: 8px;
-  width: 40px;
-  height: 130px;
-  background-color: #d4d9df;
-  border-radius: 4px;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  gap: 20px;
-}
-
-#mode-1 {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #4a90e2;
-  outline: 1px solid #4a90e2;
-  outline-offset: 3px;
-  cursor: pointer;
-  transform: scale(0.75);
-  opacity: 25%;
-  transition: all 0.5s ease-in-out;
-}
-
-#mode-2 {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: rgb(247, 73, 73);
-  outline: 1px solid rgb(247, 73, 73);
-  outline-offset: 3px;
-  cursor: pointer;
-  opacity: 25%;
-  transform: scale(0.75);
-  transition: all 0.5s ease-in-out;
-}
-#mode-3 {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: rgb(9, 172, 82);
-  outline: 1px solid rgb(9, 172, 82);
-  outline-offset: 3px;
-  cursor: pointer;
-  opacity: 25%;
-  transform: scale(0.75);
-  transition: all 0.5s ease-in-out;
-}
-
-#mode li.active {
-  opacity: 1;
-  transform: scale(0.8);
 }

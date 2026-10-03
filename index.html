@@ -21,23 +21,29 @@
     <button id="up">
       <i class="fa-solid fa-arrow-up-long"></i>
     </button>
-    <ul id="mode">
-      <li id="mode-1" data-color="#5199eb"></li>
-      <li id="mode-2" data-color="red"></li>
-      <li id="mode-3" data-color="green"></li>
-    </ul>
+
     <header>
       <div class="container">
         <nav class="main-nav">
           <div class="logo modes">
             <a href="#home">Abdulrahman Eisa</a>
           </div>
-          <ul class="sub-nav">
-            <li><a href="#home">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          <div class="bar">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+          <div class="nav-elements">
+            <ul class="sub-nav">
+              <li><a href="#home">About</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul id="mode">
+              <li id="mode-1" data-color="#5199eb"></li>
+              <li id="mode-2" data-color="red"></li>
+              <li id="mode-3" data-color="green"></li>
+            </ul>
+          </div>
         </nav>
       </div>
     </header>
@@ -78,7 +84,7 @@
           </div>
           <div class="photo">
             <img
-              src="profile_photo.jpg"
+              src="imgs/profile.jpg"
               alt="error while processing your image"
             />
           </div>
@@ -91,29 +97,43 @@
           <h2 class="section-title">My projects</h2>
           <div class="project-grid">
             <div class="project-item">
-              <img src="university.jpg" />
+              <img src="imgs/Mortaqi.jpg" />
               <div class="project-overlay">
-                <h2>University project</h2>
-                <p>Html ,css ,Ts ,node js ,Vue js ,Express js ,Sql</p>
-                <a href="#" class="buttons btn-secondary"> View project</a>
+                <h2>Mortaqi website</h2>
+                <p>Html ,css ,js ,node js ,React js ,Express js ,Sql</p>
+                <a
+                  href="https://abo-eisa.github.io/Mortaqi-LMS/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="buttons btn-secondary"
+                >
+                  View project</a
+                >
               </div>
             </div>
             <div class="project-item">
-              <img src="resturant.png" />
+              <img src="imgs/Dashbord.png" />
               <div class="project-overlay">
-                <h2>Resturant project</h2>
-                <p>Html ,css ,Js ,node js ,Vue js ,Express js , Sql</p>
-                <a href="#" class="buttons btn-secondary"> View project</a>
+                <h2>Dashboard</h2>
+                <p>HTML, CSS</p>
+                <a
+                  href="https://abo-eisa.github.io/Dashboard-project/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="buttons btn-secondary"
+                >
+                  View project</a
+                >
               </div>
             </div>
-            <div class="project-item">
+            <!-- <div class="project-item">
               <img src="ecommerse.jpg" />
               <div class="project-overlay">
-                <h2>E-commerce project</h2>
-                <p>Html ,css ,Js ,node js ,Vue js ,Express js ,mongo dp</p>
+                <h2>StockFlow</h2>
+                <p>Html ,css ,Js</p>
                 <a href="#" class="buttons btn-secondary"> View project</a>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
@@ -140,8 +160,8 @@
               <h3>SQL</h3>
             </div>
             <div class="skill-item">
-              <i class="fab fa-vuejs V"></i>
-              <h3>Vue js</h3>
+              <i class="fa-brands fa-react R"></i>
+              <h3>React js</h3>
             </div>
             <div class="skill-item">
               <i class="fab fa-node-js N"></i>
@@ -185,22 +205,37 @@
             <div class="contact-form">
               <h3>Fill the form to contact me</h3>
               <form id="my-contact-info">
+                <label for="f-name"></label>
                 <input
                   style="display: block"
                   type="text"
-                  name="name"
-                  placeholder="Write your name"
+                  name="f-name"
+                  id="f-name"
+                  placeholder="Write your first name"
                   required
                 />
+                <label for="l-name"></label>
+                <input
+                  style="display: block"
+                  type="text"
+                  name="l-name"
+                  id="l-name"
+                  placeholder="Write your last name"
+                  required
+                />
+                <label for="email"></label>
                 <input
                   style="display: block"
                   type="email"
                   name="email"
+                  id="email"
                   placeholder="Write your email"
                   required
                 />
+                <label for="msg"></label>
                 <textarea
                   style="display: block"
+                  id="msg"
                   name="msg"
                   rows="5"
                   placeholder="Write your message"
